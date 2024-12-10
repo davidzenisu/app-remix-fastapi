@@ -6,7 +6,8 @@
                 "DavidAnson.vscode-markdownlint",
                 "ms-azuretools.vscode-azurestaticwebapps",
                 "ms-python.python",
-                "ms-vscode.azure-account"
+                "ms-vscode.azure-account",
+                "ms-azuretools.vscode-bicep"
             ],
             "settings": {
                 "files.autoSave": "afterDelay",
@@ -14,5 +15,8 @@
                 "editor.formatOnSave": true
             }
         }
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/azure-cli:1": {}
     }
 }
