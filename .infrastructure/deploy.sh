@@ -1,9 +1,8 @@
-repositoryUrl=$(gh repo view --json url -q ".url")
+# repositoryUrl=$(gh repo view --json url -q ".url")
 uuidConcat=$(openssl rand -hex 16)
 deploymentName=$(echo ${uuidConcat:0:8}-${uuidConcat:8:4}-${uuidConcat:12:4}-${uuidConcat:16:4}-${uuidConcat:20:12})
 
-az deployment sub create -f .infrastructure/main.bicep -l westeurope -n $deploymentName \
-    --parameters repositoryUrl=$repositoryUrl
+az deployment sub create -f .infrastructure/main.bicep -l westeurope -n $deploymentName
 webAppName=$(az deployment sub show -n $deploymentName --query properties.outputs.staticWebAppName.value -o tsv)
 deploymentToken=$(az staticwebapp secrets list -n $webAppName --q "properties.apiKey" -o tsv)
 
