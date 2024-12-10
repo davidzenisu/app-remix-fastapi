@@ -1,6 +1,8 @@
 targetScope = 'subscription'
 
 param location string = 'westeurope'
+param repositoryUrl string
+param branch string = 'main'
 
 @description('String to make resource names unique')
 var resourceToken = uniqueString(subscription().subscriptionId, location)
@@ -19,6 +21,8 @@ module swa 'br/public:avm/res/web/static-site:0.3.0' = {
     name: 'swa-${resourceToken}'
     location: location
     sku: 'Free'
+    repositoryUrl: repositoryUrl
+    branch: branch
   }
 }
 

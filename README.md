@@ -44,5 +44,5 @@ This template comes with [Tailwind CSS](https://tailwindcss.com/) already config
 Deploy your infrastructure via bicep by running:
 
 ``` sh
-az deployment sub create -f .infrastructure/main.bicep -l <location>
+npm run infra
 ```
