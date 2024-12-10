@@ -1,0 +1,18 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "DavidAnson.vscode-markdownlint",
+                "ms-azuretools.vscode-azurestaticwebapps",
+                "ms-python.python",
+                "ms-vscode.azure-account"
+            ],
+            "settings": {
+                "files.autoSave": "afterDelay",
+                "editor.formatOnPaste": true,
+                "editor.formatOnSave": true
+            }
+        }
+    }
+}
