@@ -46,3 +46,11 @@ Deploy your infrastructure via bicep by running:
 ``` sh
 npm run infra
 ```
+
+## Test
+
+Run your full app via:
+
+``` sh
+swa start build/client --api-location api
+```
