@@ -1,25 +1,16 @@
-import azure.functions as func
 import logging
+import azure.functions as func
+from swa_api import AsgiFunctionApp
+import os
+import sys
+from main import app
+if os.environ.get('WEBSITE_RUN_FROM_PACKAGE') == '1':
+    package_path = os.path.abspath(os.path.join(
+        os.path.dirname(__file__), 'packages'))
+    sys.path.append(package_path)
 
-app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
+azureLogger = logging.getLogger('azure')
+azureLogger.setLevel(logging.ERROR)
 
-@app.route(route="backend")
-def backend(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
-
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
-
-    if name:
-        return func.HttpResponse(f"Hello, {name}. This HTTP triggered function executed successfully.")
-    else:
-        return func.HttpResponse(
-             "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.",
-             status_code=200
-        )
+app = AsgiFunctionApp(
+    app=app, http_auth_level=func.AuthLevel.ANONYMOUS)
