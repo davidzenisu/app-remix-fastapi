@@ -1,5 +1,6 @@
 import logging
 import azure.functions as func
+from swa_api import AsgiFunctionApp
 import os
 import sys
 from main import app
@@ -11,5 +12,5 @@ if os.environ.get('WEBSITE_RUN_FROM_PACKAGE') == '1':
 azureLogger = logging.getLogger('azure')
 azureLogger.setLevel(logging.ERROR)
 
-app = func.AsgiFunctionApp(
+app = AsgiFunctionApp(
     app=app, http_auth_level=func.AuthLevel.ANONYMOUS)
