@@ -11,10 +11,10 @@ interface User {
 let microsoftStrategy = new MicrosoftStrategy(
     {
         clientId: "90442738-405f-423f-987b-2e6da27c5531",
-        clientSecret: "YOUR_CLIENT_SECRET",
-        redirectURI: "http://localhost:5173/auth/microsoft/callback",
+        clientSecret: "<YOUR_CLIENT_SECRET>",
+        redirectURI: "http://localhost:5173/callback",
         tenantId: "41eb9a7a-3cb8-43f3-971b-4c6b9113c175", // optional - necessary for organization without multitenant (see below)
-        scopes: ["openid", "profile", "email"], // optional
+        scopes: ["e4484893-8dd3-4c43-9bf5-ff08ff7681b6/user_impersonation"], // optional
         prompt: "login", // optional
     },
     async ({ request, tokens }) => {
