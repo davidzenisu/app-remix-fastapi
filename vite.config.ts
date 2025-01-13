@@ -9,9 +9,12 @@ declare module "@remix-run/node" {
 }
 
 export default defineConfig({
+  server: {
+    host: true
+  },
   plugins: [
     remix({
-      ssr: false,
+      ssr: true,
       future: {
         v3_fetcherPersist: true,
         v3_relativeSplatPath: true,
