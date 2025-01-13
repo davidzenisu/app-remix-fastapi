@@ -17,8 +17,5 @@ export default function Screen() {
 export async function action({ request }: ActionFunctionArgs) {
     // we call the method with the name of the strategy we want to use and the
     // request object
-    let user = await authenticator.authenticate("microsoft", request);
-
-    let session = await sessionStorage.getSession(request.headers.get("cookie"));
-    session.set("user", user);
+    await authenticator.authenticate("microsoft", request);
 }
